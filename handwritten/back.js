@@ -49,12 +49,12 @@ function testWeightBagProblem(weight, value, size) {
   return dp[length][size];
 }
 
-const weight = [3, 4, 1];
-const value = [15, 20, 30];
-const size = 4;
+// // const weight = [3, 4, 1];
+// // const value = [15, 20, 30];
+// // const size = 4;
 
-let result = testWeightBagProblem(weight, value, size);
-console.log('result: ', result);
+// let result = testWeightBagProblem(weight, value, size);
+// console.log('result: ', result);
 
 // 背包问题
 
@@ -79,4 +79,22 @@ console.log('result: ', result);
 // 4
 // 5
 
+function testWeightBagProblem(weight, value, size) {
+  const dp = Array(size + 1).fill(0);
+  console.log(dp);
+  for (let i = 0; i <= weight.length; i++) {
+    // 遍历物品
+    for (let j = size; j >= weight[i]; j--) {
+      // 遍历背包容量
+      dp[j] = Math.max(dp[j], dp[j - weight[i]] + value[i]);
+    }
+  }
+  console.log(dp);
+  return dp[size];
+}
 
+const weight = [1, 3, 4];
+const value = [15, 20, 30];
+const size = 4;
+
+console.log(testWeightBagProblem(weight, value, size));

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>代码</h1>
+
+  <h1>客户端代码</h1>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+    axios({
+      url: 'http://127.0.0.1:3001/api/v1/list',
+    })
+      .then((res) => {
+        console.log('res', res);
+      })
+      .catch((err) => {
+        // console.log('报错信息', err);
+      });
+  </script>
+</body>
+
+</html>
