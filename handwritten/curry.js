@@ -14,7 +14,5 @@ function test(a, b, c) {
   return a + b + c
 }
 
-
-
 const testFn = curry(test)
 console.log(testFn(1, 4)(2, 3, 4, 5,))

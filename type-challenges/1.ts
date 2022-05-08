@@ -9,3 +9,11 @@ let obj: Person = {
   age: 1,
   sex: {},
 };
+
+// interface AppOrder {
+//   name: string;
+//   age: number;
+// }
+
+// let a: undefined | AppOrder;
+// let a: string[] = ["1", 2, 3];
