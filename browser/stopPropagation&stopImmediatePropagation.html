@@ -13,8 +13,6 @@
     <ruby>龙<rt>long</rt></ruby>
 
     <a onclick="alert(1)" href="https://www.baidu.com">百度</a>
-    <div></div>
-    <!-- <a id="aa" href="https://www.baidu.com">第二个</a> -->
     <h1 id="title">h1标签</h1>
 
     <script>
@@ -25,8 +23,11 @@
       oTitle.addEventListener("click", function (e) {
         alert(2);
         // e.stopPropagation();
-        // e.stopImmediatePropagation();
-        this.removeEventListener("click", callback);
+
+        // 取消第三次事件
+        // e.stopImmediatePropagation(); // 方法一
+
+        this.removeEventListener("click", callback); // 方法二
       });
 
       const callback = function () {
@@ -34,12 +35,6 @@
       };
 
       oTitle.addEventListener("click", callback);
-
-      // document.getElementById("aa").onclick = function () {
-      //   alert(222);
-      // };
     </script>
-
-    <!-- <script src="./1.js"></script> -->
   </body>
 </html>
