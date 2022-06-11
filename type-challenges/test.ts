@@ -676,17 +676,95 @@
 
 // type a<T> = Partial<T>;
 
-type MyReturnType<T> = {};
+// type MyReturnType<T> = {};
 
-type ReturnType1<T extends (...args: any[]) => any> = T extends (
-  ...args: any[]
-) => infer R
-  ? R
-  : any;
+// type ReturnType1<T extends (...args: any[]) => any> = T extends (
+//   ...args: any[]
+// ) => infer R
+//   ? R
+//   : any;
 
-type Func<T = number> = (a: T) => T;
+// type Func<T = number> = (a: T) => T;
 
-const foo: ReturnType1<Func<string>> = '123';
+// const foo: ReturnType1<Func<string>> = "123";
 
+// interface GenericIdentityFn<Type> {
+//   (arg: Type): Type;
+// }
 
+// let myFn: GenericIdentityFn<any> = (arg) => {
+//   return arg;
+// };
 
+// class GenericNumber<NumType> {
+//   zeroValue: NumType;
+//   add: (x: NumType, y: NumType) => NumType;
+// }
+
+// let myGenericNumber = new GenericNumber<number>();
+
+// myGenericNumber.zeroValue = 123;
+
+// myGenericNumber.add = function (x, y) {
+//   return x + y;
+// };
+
+// function getProperty<Type, Key extends keyof Type>(obj: Type, key: Key) {
+//   return obj[key];
+// }
+
+// let x = { a: 1, b: 2, c: 3, d: 4 };
+// getProperty(x, 'a');
+
+function create<Type>(c: { new (): Type }): Type {
+  return new c();
+}
+
+class BeeKeeper {
+  hasMask: boolean = true;
+}
+
+class ZooKeeper {
+  nametag: string = "Mikle";
+  numLegs: number;
+}
+
+class Animal {
+  numLegs: number = 4;
+}
+
+class Bee extends Animal {
+  keeper: BeeKeeper = new BeeKeeper();
+}
+
+class Lion extends Animal {
+  keeper: ZooKeeper = new ZooKeeper();
+}
+
+function createInstance<A extends Animal>(c: new () => A): A {
+  return new c();
+}
+
+createInstance(Animal).numLegs;
+createInstance(Bee).keeper.hasMask;
+createInstance(Bee).numLegs;
+
+createInstance(ZooKeeper);
+
+// interface Animal {
+//   name: string;
+// }
+
+// interface Dog extends Animal {
+//   breed: string;
+// }
+
+// class Dog1 {
+//   name: string;
+
+//   constructor(name) {
+//     this.name = name;
+//   }
+// }
+
+// let dog = new Dog1('张三');
