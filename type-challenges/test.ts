@@ -71,7 +71,6 @@
 //   return animal.fly();
 // }
 
-
 // let a: number | string = 'aaa';
 
 // class Person {
@@ -190,7 +189,6 @@
 // const s = firstElement(["a", "b", "c"]);
 // s
 
-
 // // n is of type 'number'
 // const n = firstElement([1, 2, 3]);
 
@@ -198,7 +196,6 @@
 // const u = firstElement([])
 
 // u
-
 
 // function minimumLength<Type extends { length: number }>(
 //   obj: Type,
@@ -218,7 +215,6 @@
 // // and crashes here because arrays have
 // // a 'slice' method, but not the returned object!
 // console.log(arr.slice(0));
-
 
 // type DescribableFunction = {
 //   description: string;
@@ -252,7 +248,6 @@
 
 // len(Math.random() > 0.5 ? 'hello' : [0]);
 
-
 // interface User {
 //   admin: string,
 // }
@@ -262,7 +257,6 @@
 
 // const db = getDB();
 // const admins = db.filterUsers(() => this.admin);
-
 
 // function fn(x: string | number) {
 //   if (typeof x === "string") {
@@ -297,7 +291,6 @@
 //   return false;
 // };
 
-
 // interface Person {
 //   name: string;
 //   age: number;
@@ -327,7 +320,6 @@
 // const myArray: StringArray = ['11'];
 
 // const secondItem = myArray[1];
-
 
 // interface Animal {
 //   name: string;
@@ -374,7 +366,6 @@
 //   radius: number;
 // }
 
-
 // interface ColorfulCircle extends Colorful, Circle { }
 
 // const cc: ColorfulCircle = {
@@ -395,13 +386,9 @@
 
 // }
 
-
 // draw({ color: 'red', radius: 100, });
 
 // draw({ color: "red", radius: 42 });
-
-
-
 
 // interface Colorful {
 //   color: string;
@@ -430,7 +417,6 @@
 
 // console.log((x.contents as String).toLowerCase());
 
-
 // interface NumberBox {
 //   contents: number;
 // }
@@ -442,7 +428,6 @@
 // interface BooleanBox {
 //   contents: boolean;
 // }
-
 
 // interface Box<T> {
 //   contents: T,
@@ -472,7 +457,6 @@
 // // a[1] = 3;
 // // a.push(4);
 
-
 // function doStuff(values: ReadonlyArray<string>) {
 //   const copy = values.slice();
 //   console.log(`The first value is ${values[0]}`);
@@ -487,14 +471,12 @@
 // x = y;
 // y = x;
 
-
 // type StringNumberPair = [string, number];
 
 // function doSomething(pair: StringNumberPair) {
 //   const a = pair[0];
 //   // a
 // }
-
 
 // interface StringNumberPair1 {
 //   length: 2,
@@ -510,7 +492,6 @@
 
 // const a: StringNumberBooleans = ['hello', 1];
 // const b: StringNumberBooleans = ['hello', 1, false];
-
 
 // console.log(b.length);
 
@@ -529,7 +510,6 @@
 // }
 
 // distanceFromOrigin(point);
-
 
 // interface Animal {
 //   name: string;
@@ -560,9 +540,150 @@
 //   age: 123,
 // }
 
-function identity<T>(arg: T): T {
-  return arg;
-}
+// function identity<T>(arg: T): T {
+//   return arg;
+// }
 
+// identity(123);
 
-identity(123);
+// function identity<T>(arg: T) {
+//   return arg;
+// }
+
+// function identity(arg: number): number;
+// function identity<T>(arg: T): T {
+//   return arg;
+// }
+
+// identity(111);
+
+// class Person {
+//   name: string;
+
+//   constructor(name) {
+//     this.name = name;
+//   }
+// }
+
+// function say(name: string) {}
+
+// const id<T> = (arg: T): T => arg;
+// function id<T>(params: T): T {
+//   return params;
+// }
+
+// id<number>(123);
+
+// const id: <T>(id: T) => T = function (arg) {
+//   return arg;
+// };
+
+// id<number>(123);
+
+// enum Sex {
+//   Man,
+//   Woman,
+//   UnKnow,
+// }
+// interface Person {
+//   name: string;
+//   sex: Sex;
+//   age: number;
+// }
+
+// // interface MarketPerson {
+// //   name?: string;
+// //   sex?: Sex;
+// //   age?: number;
+// //   phone: string;
+// // }
+
+// type MarketPerson = Partial<Person> & { phone: string };
+
+// let user: MarketPerson = {
+//   phone: "1508",
+// };
+
+// function Partial(Type) {
+//   type ans = {};
+//   for (let key of Type) {
+//     ans[key] = makeOptional(Type, key);
+//   }
+
+//   return ans;
+// }
+
+// type PartialedPerson = Partial(Person)
+
+// type Partial1<T> = {
+//   [key in keyof T]?: T[key];
+// };
+
+// // type Partial<T> = {
+// //     [P in keyof T]?: T[P];
+// // };
+
+// function id1<T, U>(arg1: T, arg2: U): U {
+//   return arg2;
+// }
+
+// // type P = [number, string, boolean];
+// type P = [string];
+// type Q = Date;
+
+// type R = [Q, ...P]; // A rest element type must be an array type.
+
+// type Lucifer<T> = LeetCode;
+
+// type LeetCode<T = {}> = {
+//   name: T;
+// };
+
+// let aaa: LeetCode<string>; //ok
+// let bbb: Lucifer<string>;
+
+// interface Sizeable {
+//   size: number;
+// }
+
+// function trace<T extends Sizeable>(arg: T): T {
+//   console.log(arg.size); // Error: Property 'size doesn't exist on type 'T'
+//   return arg;
+// }
+
+// // trace({
+// //   size: 100,
+// // });
+
+// const aaaaa: number[] = [11];
+
+// type FC<P = {}> = FunctionComponent<P>;
+
+// type PropsWithChildren<T> = {};
+// type ReactElement<T, U> = {};
+
+// interface FunctionComponent<P = {}> {
+//   (props: PropsWithChildren<P>, context?: any): ReactElement<any, any> | null;
+//   defaultProps: Partial<P>;
+//   displayName?: string;
+// }
+
+// type DeepPartial<T> = T extends Function
+//   ? T
+//   : T extends object
+//   ? { [P in keyof T]?: DeepPartial<T[P]> }
+//   : T;
+
+// type a<T> = Partial<T>;
+
+type MyReturnType<T> = {};
+
+type ReturnType1<T extends (...args: any[]) => any> = T extends (
+  ...args: any[]
+) => infer R
+  ? R
+  : any;
+
+type Func<T = number> = (a: T) => T;
+
+const foo: ReturnType1<Func<string>> = '123';
