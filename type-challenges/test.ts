@@ -687,3 +687,6 @@ type ReturnType1<T extends (...args: any[]) => any> = T extends (
 type Func<T = number> = (a: T) => T;
 
 const foo: ReturnType1<Func<string>> = '123';
+
+
+
