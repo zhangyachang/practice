@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <h1>客户端代码</h1>
+    <div id="box"></div>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+      // console.log("代码");
+      console.log(window);
+
+      // 跨域中要求携带cookie
+      // 客户端
+      // 1. 需要在请求中加上 withCredentials 这个东西
+
+      // 服务端
+      // 2. 服务端的Access-Control-Allow-Origin: 不能设置 * 需要设置具体的域名
+      // 3. Access-Control-Allow-Credentials 这个设置为true
+      axios({
+        url: "http://127.0.0.1:3001/api/v1/list",
+        withCredentials: true,
+      })
+        .then((res) => {
+          console.log("res", res);
+
+          var oScript = document.createElement("script");
+          oScript.src = "http://127.0.0.1:8001/xss.js";
+
+          console.log(oScript);
+          console.log(document.getElementById("box"));
+          document.getElementById("box").appendChild(oScript);
+        })
+        .catch((err) => {
+          console.log("请求报错了");
+        });
+    </script>
+  </body>
+</html>

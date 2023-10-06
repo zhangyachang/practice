@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <section>内容</section>
+
+    <ruby>龙<rt>long</rt></ruby>
+
+    <a onclick="alert(1)" href="https://www.baidu.com">百度</a>
+    <h1 id="title">h1标签</h1>
+
+    <script>
+      var oTitle = document.getElementById("title");
+      oTitle.addEventListener("click", function () {
+        alert(1);
+      });
+      oTitle.addEventListener("click", function (e) {
+        alert(2);
+        // e.stopPropagation();
+
+        // 取消第三次事件
+        // e.stopImmediatePropagation(); // 方法一
+
+        this.removeEventListener("click", callback); // 方法二
+      });
+
+      const callback = function () {
+        alert(3);
+      };
+
+      oTitle.addEventListener("click", callback);
+    </script>
+  </body>
+</html>

